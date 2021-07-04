@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+}
+
+#chartContainer {
+  height: 1000px;
+  width: 1000px;
+  margin-left: 20px;
+}
+
+#displayDataBtn {
+  background: #283961;
+  margin-left: 20px;
+}
