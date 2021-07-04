@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="./index.css">
     </head>
-    
     <body>
-        <h1> Emotions heatmap</h1>
+        <h1> Emotions Heatmap</h1>
         <div id='myDiv'>
-            <!--Display Emotions-->
+            <div id="buttonContainer">
+                <a id="displayDataBtn" class="waves-effect waves-light btn">Display Data</a>
+            </div>
+            <div id="chartContainer">
+                <canvas id="barChart"></canvas>
+            </div>
         </div>
-        <script tye="text/javascript" src="script.js">
-        </script>
+        
+        <script type="text/javascript" src="/index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 </html>

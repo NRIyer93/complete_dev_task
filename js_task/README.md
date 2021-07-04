@@ -5,4 +5,8 @@
 
 There are index.html & script.js files, however feel free to use which ever framework/packages you'd like
 
-The data.json file in this folder shows an example of how the data should look after manipulation of the initial anonoymised csv. 
+The data.json file in this folder shows an example of how the data should look after manipulation of the initial anonoymised csv.
+
+## Instructions to run
+1. Run 'npm install' in project directory.
+2. cd into js_task folder and run 'node app.js'.

@@ -1,8 +1,3 @@
-function displayData() {
-    console.log('display data on click');
-    fetchData();
-}
-
 function fetchData() {
     return fetch('./data/emotion_data.json'
         , {
@@ -11,38 +6,35 @@ function fetchData() {
                 'Accept': 'application/json'
             }
         })
-        // fetch("./data/emotion_data.json")
         .then(response => response.json())
-        .then(data => getData(data));
+        .then(data => sortData(data));
 }
 
 function addListener() {
     const displayDataBtn = document.getElementById("displayDataBtn");
     displayDataBtn.addEventListener("click", () => {
-        displayData();
-        //renderChart();
+        fetchData();
     })
 }
 
-function getData(data) {
-    console.log(data.length);
+function sortData(data) {
     const logCount = [];
     const emotionName = [];
+
     // loop through each element and render chart here
     for (let i = 0; i < data.length; i++) {
         emotionName.push(data[i].emotion);
         logCount.push(data[i].log_count);
     }
 
-    renderChart(emotionName, logCount);
+    renderBarChart(emotionName, logCount);
 }
 
-function renderChart(emotionName, logCount) {
-    console.log('rendering chart...');
+function renderBarChart(emotionName, logCount) {
     const dataToDisplay = {
         labels: emotionName,
         datasets: [{
-            label: 'Emotion dataset',
+            label: 'Emotion Dataset',
             data: logCount,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -63,23 +55,48 @@ function renderChart(emotionName, logCount) {
                 'rgb(201, 203, 207)'
             ],
             borderWidth: 1,
-        }]
+
+        }],
     };
 
     const config = {
         type: 'bar',
         data: dataToDisplay,
         options: {
+            responsive: true,
             scales: {
+                x: {
+                    beginAtZero: true,
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Emotion',
+                        color: '#283961',
+                        font: {
+                            size: 20,
+                            weight: 'bold',
+                        },
+                    }
+                },
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Count',
+                        color: '#283961',
+                        font: {
+                            size: 20,
+                            weight: 'bold',
+                        },
+                    }
                 }
-            }
+            },
         },
     };
 
     const dataChart = new Chart(
-        document.getElementById('myChart'),
+        document.getElementById('barChart'),
         config
     );
 }
